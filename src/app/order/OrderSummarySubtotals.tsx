@@ -23,9 +23,7 @@ export interface OrderSummarySubtotalsProps {
 const OrderSummarySubtotals: FunctionComponent<OrderSummarySubtotalsProps> = ({
     discountAmount,
     giftCertificates,
-    taxes,
     giftWrappingAmount,
-    shippingAmount,
     subtotalAmount,
     handlingAmount,
     storeCreditAmount,
@@ -78,28 +76,11 @@ const OrderSummarySubtotals: FunctionComponent<OrderSummarySubtotalsProps> = ({
             testId="cart-gift-wrapping"
         /> }
 
-        <OrderSummaryPrice
-            amount={ shippingAmount }
-            label={ <TranslatedString id="cart.shipping_text" /> }
-            testId="cart-shipping"
-            zeroLabel={ <TranslatedString id="cart.free_text" /> }
-        />
-
         { !!handlingAmount && <OrderSummaryPrice
             amount={ handlingAmount }
             label={ <TranslatedString id="cart.handling_text" /> }
             testId="cart-handling"
         /> }
-
-        { (taxes || [])
-            .map((tax, index) =>
-                <OrderSummaryPrice
-                    amount={ tax.amount }
-                    key={ index }
-                    label={ tax.name }
-                    testId="cart-taxes"
-                />
-         ) }
 
         { !!storeCreditAmount && <OrderSummaryDiscount
             amount={ storeCreditAmount }
