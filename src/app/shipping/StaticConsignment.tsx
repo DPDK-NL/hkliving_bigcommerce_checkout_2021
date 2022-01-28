@@ -4,7 +4,6 @@ import React, { memo, FunctionComponent } from 'react';
 import { AddressType, StaticAddress } from '../address';
 import { TranslatedString } from '../locale';
 
-import { StaticShippingOption } from './shippingOption';
 import './StaticConsignment.scss';
 import StaticConsignmentItemList from './StaticConsignmentItemList';
 
@@ -21,7 +20,6 @@ const StaticConsignment: FunctionComponent<StaticConsignmentProps> = ({
 }) => {
     const {
         shippingAddress: address,
-        selectedShippingOption,
     } = consignment;
 
     return (
@@ -41,20 +39,6 @@ const StaticConsignment: FunctionComponent<StaticConsignmentProps> = ({
                     cart={ cart }
                     consignment={ consignment }
                 /> }
-
-            { selectedShippingOption &&
-                <div>
-                    { !compactView &&
-                        <strong>
-                            <TranslatedString id="shipping.shipping_method_label" />
-                        </strong> }
-                    <div className="shippingOption shippingOption--alt">
-                        <StaticShippingOption
-                            displayAdditionalInformation={ false }
-                            method={ selectedShippingOption }
-                        />
-                    </div>
-                </div> }
         </div>
     );
 };
