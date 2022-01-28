@@ -1,12 +1,9 @@
 import { CheckoutSelectors, CustomerRequestOptions, CustomError } from '@bigcommerce/checkout-sdk';
-import { noop } from 'lodash';
 import React, { FunctionComponent } from 'react';
 
 import { withCheckout, CheckoutContextProps } from '../checkout';
-import { TranslatedString } from '../locale';
-import { Button, ButtonSize, ButtonVariant } from '../ui/button';
 
-import canSignOut, { isSupportedSignoutMethod } from './canSignOut';
+import canSignOut from './canSignOut';
 
 export interface CustomerInfoProps {
     onSignOut?(event: CustomerSignOutEvent): void;
@@ -27,31 +24,7 @@ interface WithCheckoutCustomerInfoProps {
 
 const CustomerInfo: FunctionComponent<CustomerInfoProps & WithCheckoutCustomerInfoProps> = ({
     email,
-    methodId,
-    isSignedIn,
-    isSigningOut,
-    onSignOut = noop,
-    onSignOutError = noop,
-    signOut,
 }) => {
-    const handleSignOut: () => Promise<void> = async () => {
-        try {
-            if (isSupportedSignoutMethod(methodId)) {
-                await signOut({ methodId });
-                onSignOut({ isCartEmpty: false });
-                window.location.reload();
-            } else {
-                await signOut();
-                onSignOut({ isCartEmpty: false });
-            }
-        } catch (error) {
-            if (error.type === 'checkout_not_available') {
-                onSignOut({ isCartEmpty: true });
-            } else {
-                onSignOutError(error);
-            }
-        }
-    };
 
     return (
         <div
@@ -65,17 +38,7 @@ const CustomerInfo: FunctionComponent<CustomerInfoProps & WithCheckoutCustomerIn
                 { email }
             </div>
 
-            <div className="customerView-actions">
-                { isSignedIn && <Button
-                    isLoading={ isSigningOut }
-                    onClick={ handleSignOut }
-                    size={ ButtonSize.Tiny }
-                    testId="sign-out-link"
-                    variant={ ButtonVariant.Secondary }
-                >
-                    <TranslatedString id="customer.sign_out_action" />
-                </Button> }
-            </div>
+            <div className="customerView-actions" />
         </div>
     );
 };
