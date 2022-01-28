@@ -70,22 +70,11 @@ class AddressSelect extends PureComponent<AddressSelectProps> {
 const AddressSelectMenu: FunctionComponent<AddressSelectProps> = ({
     addresses,
     onSelectAddress,
-    onUseNewAddress,
-    selectedAddress,
 }) => (
     <ul
         className="dropdown-menu instrumentSelect-dropdownMenu"
         id="addressDropdown"
     >
-        <li className="dropdown-menu-item dropdown-menu-item--select">
-            <a
-                data-test="add-new-address"
-                href="#"
-                onClick={ preventDefault(() => onUseNewAddress(selectedAddress)) }
-            >
-                <TranslatedString id="address.enter_address_action" />
-            </a>
-        </li>
         { addresses.map(address => (
             <li
                 className="dropdown-menu-item dropdown-menu-item--select"
