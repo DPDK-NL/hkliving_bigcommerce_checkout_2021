@@ -13,6 +13,7 @@ export interface OrderSummaryItemProps {
     image?: ReactNode;
     description?: ReactNode;
     productOptions?: OrderSummaryItemOption[];
+    sku?: string;
 }
 
 export interface OrderSummaryItemOption {
@@ -23,17 +24,12 @@ export interface OrderSummaryItemOption {
 const OrderSummaryItem: FunctionComponent<OrderSummaryItemProps> = ({
     amount,
     amountAfterDiscount,
-    image,
     name,
-    productOptions,
     quantity,
     description,
+    sku,
 }) => (
     <div className="product" data-test="cart-item">
-        <figure className="product-column product-figure">
-            { image }
-        </figure>
-
         <div className="product-column product-body">
             <h5
                 className="product-title optimizedCheckout-contentPrimary"
@@ -45,15 +41,7 @@ const OrderSummaryItem: FunctionComponent<OrderSummaryItemProps> = ({
                 className="product-options optimizedCheckout-contentSecondary"
                 data-test="cart-item-product-options"
             >
-                { (productOptions || []).map((option, index) =>
-                    <li
-                        className="product-option"
-                        data-test={ option.testId }
-                        key={ index }
-                    >
-                        { option.content }
-                    </li>
-                ) }
+                { sku && <li className="product-option">{ sku }</li> }
             </ul>
             { description && <div
                 className="product-description optimizedCheckout-contentSecondary"
