@@ -6,7 +6,7 @@ import { lazy, object } from 'yup';
 
 import { getAddressFormFieldsValidationSchema, getTranslateAddressError, isEqualAddress, mapAddressFromFormValues, mapAddressToFormValues, AddressFormValues } from '../address';
 import { getCustomFormFieldsValidationSchema } from '../formFields';
-import { withLanguage, WithLanguageProps } from '../locale';
+import {TranslatedString, withLanguage, WithLanguageProps} from '../locale';
 import { Fieldset, Form, FormContext } from '../ui/form';
 
 import hasSelectedShippingOptions from './hasSelectedShippingOptions';
@@ -122,6 +122,12 @@ class SingleShippingForm extends PureComponent<SingleShippingFormProps & WithLan
         return (
             <Form autoComplete="on">
                 <Fieldset>
+                    { (Array.isArray(addresses) && addresses.length === 0) && <>
+                        <TranslatedString id="custom.no_addresses" />
+                        <a href="https://hkliving.com/contact">
+                            <TranslatedString id="custom.no_addresses_action" />
+                        </a>
+                    </> }
                     <ShippingAddress
                         addresses={ addresses }
                         consignments={ consignments }
@@ -143,7 +149,7 @@ class SingleShippingForm extends PureComponent<SingleShippingFormProps & WithLan
                         shouldShowSaveAddress={ shouldShowSaveAddress }
                     />
                     {
-                        shouldShowBillingSameAsShipping && <div className="form-body">
+                        (Array.isArray(addresses) && addresses.length > 0) && shouldShowBillingSameAsShipping && <div className="form-body">
                             <BillingSameAsShippingField />
                         </div>
                     }
@@ -166,11 +172,16 @@ class SingleShippingForm extends PureComponent<SingleShippingFormProps & WithLan
             isLoading,
             consignments,
             isValid,
+            addresses,
         } = this.props;
 
         const {
             isUpdatingShippingData,
         } = this.state;
+
+        if (Array.isArray(addresses) && addresses.length === 0) {
+            return true;
+        }
 
         if (!isValid) {
             return false;

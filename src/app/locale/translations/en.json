@@ -468,6 +468,10 @@
             "boleto_link_text": "Boleto Bancário Ticket",
             "oxxo_link_text": "OXXO Ticket",
             "sepa_link_text": "SEPA Direct Debit Mandate"
+        },
+        "custom": {
+            "no_addresses": "You don't have any addresses yet. Please contact customer support. ",
+            "no_addresses_action": "Click here"
         }
     }
 }
