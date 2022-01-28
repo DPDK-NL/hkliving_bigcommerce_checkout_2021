@@ -4,7 +4,6 @@ import { OrderSummaryProps, OrderSummarySubtotalsProps } from '../order';
 
 import mapToOrderSummarySubtotalsProps from './mapToOrderSummarySubtotalsProps';
 import { WithCheckoutCartSummaryProps } from './CartSummary';
-import Redeemable from './Redeemable';
 
 export default function withRedeemable(
     OriginalComponent: ComponentType<OrderSummaryProps & OrderSummarySubtotalsProps>
@@ -21,20 +20,11 @@ export default function withRedeemable(
             onRemovedCoupon,
             onRemovedGiftCertificate,
             storeCreditAmount,
-            ...redeemableProps
         } = props;
 
         return (
             <OriginalComponent
                 { ...mapToOrderSummarySubtotalsProps(checkout) }
-                additionalLineItems={
-                    <Redeemable { ...{
-                        ...redeemableProps,
-                        onRemovedCoupon,
-                        onRemovedGiftCertificate,
-                    } }
-                    />
-                }
                 headerLink={ headerLink }
                 lineItems={ checkout.cart.lineItems }
                 onRemovedCoupon={ onRemovedCoupon }

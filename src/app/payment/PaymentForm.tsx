@@ -15,7 +15,6 @@ import { HostedCreditCardFieldsetValues } from './hostedCreditCard';
 import { getPaymentMethodName, getUniquePaymentMethodId, PaymentMethodId, PaymentMethodList } from './paymentMethod';
 import { CardInstrumentFieldsetValues } from './storedInstrument';
 import { StoreCreditField, StoreCreditOverlay } from './storeCredit';
-import PaymentRedeemables from './PaymentRedeemables';
 import PaymentSubmitButton from './PaymentSubmitButton';
 import SpamProtectionField from './SpamProtectionField';
 
@@ -145,8 +144,6 @@ const PaymentForm: FunctionComponent<PaymentFormProps & FormikProps<PaymentFormV
                 resetForm={ resetForm }
                 values={ values }
             />
-
-            <PaymentRedeemables />
 
             { isTermsConditionsRequired && <TermsConditions
                 termsConditionsText={ termsConditionsText }
