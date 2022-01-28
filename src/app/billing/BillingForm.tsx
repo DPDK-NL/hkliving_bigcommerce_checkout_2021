@@ -3,7 +3,7 @@ import { withFormik, FormikProps } from 'formik';
 import React, { createRef, PureComponent, ReactNode, RefObject } from 'react';
 import { lazy } from 'yup';
 
-import { getAddressFormFieldsValidationSchema, getTranslateAddressError, isValidCustomerAddress, mapAddressToFormValues, AddressForm, AddressFormValues, AddressSelect } from '../address';
+import { getAddressFormFieldsValidationSchema, getTranslateAddressError, isValidCustomerAddress, mapAddressToFormValues, AddressFormValues, AddressSelect } from '../address';
 import { getCustomFormFieldsValidationSchema } from '../formFields';
 import { withLanguage, TranslatedString, WithLanguageProps } from '../locale';
 import { OrderComments } from '../orderComments';
@@ -44,24 +44,15 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
 
     render(): ReactNode {
         const {
-            googleMapsApiKey,
             billingAddress,
-            countriesWithAutocomplete,
-            customer: { addresses, isGuest },
+            customer: { addresses },
             getFields,
-            countries,
             isUpdating,
-            setFieldValue,
             shouldShowOrderComments,
-            values,
             methodId,
         } = this.props;
 
         const shouldRenderStaticAddress = methodId === 'amazonpay';
-        const allFormFields = getFields(values.countryCode);
-        const customFormFields = allFormFields.filter(({ custom }) => custom);
-        const hasCustomFormFields = customFormFields.length > 0;
-        const editableFormFields = shouldRenderStaticAddress && hasCustomFormFields ? customFormFields : allFormFields;
         const { isResettingAddress } = this.state;
         const hasAddresses = addresses && addresses.length > 0;
         const hasValidCustomerAddress = billingAddress &&
@@ -75,7 +66,13 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
                     </div> }
 
                 <Fieldset id="checkoutBillingAddress" ref={ this.addressFormRef }>
-                    { hasAddresses && !shouldRenderStaticAddress &&
+                    { (Array.isArray(addresses) && addresses.length === 0) && <>
+                        <TranslatedString id="custom.no_addresses" />
+                        <a href="https://hkliving.com/contact">
+                            <TranslatedString id="custom.no_addresses_action" />
+                        </a>
+                    </> }
+                    { (Array.isArray(addresses) && addresses.length > 0) && hasAddresses && !shouldRenderStaticAddress &&
                         <Fieldset id="billingAddresses">
                             <LoadingOverlay isLoading={ isResettingAddress }>
                                 <AddressSelect
@@ -86,19 +83,6 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
                                 />
                             </LoadingOverlay>
                         </Fieldset> }
-
-                    { !hasValidCustomerAddress &&
-                        <LoadingOverlay isLoading={ isResettingAddress }>
-                            <AddressForm
-                                countries={ countries }
-                                countriesWithAutocomplete={ countriesWithAutocomplete }
-                                countryCode={ values.countryCode }
-                                formFields={ editableFormFields }
-                                googleMapsApiKey={ googleMapsApiKey }
-                                setFieldValue={ setFieldValue }
-                                shouldShowSaveAddress={ !isGuest }
-                            />
-                        </LoadingOverlay> }
                 </Fieldset>
 
                 { shouldShowOrderComments &&
@@ -106,7 +90,7 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
 
                 <div className="form-actions">
                     <Button
-                        disabled={ isUpdating || isResettingAddress }
+                        disabled={ isUpdating || isResettingAddress || (Array.isArray(addresses) && addresses.length === 0) }
                         id="checkout-billing-continue"
                         isLoading={ isUpdating || isResettingAddress }
                         type="submit"
