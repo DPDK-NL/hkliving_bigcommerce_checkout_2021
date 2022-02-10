@@ -5,7 +5,7 @@ import { lazy } from 'yup';
 
 import { getAddressFormFieldsValidationSchema, getTranslateAddressError, isValidCustomerAddress, mapAddressToFormValues, AddressFormValues, AddressSelect } from '../address';
 import { getCustomFormFieldsValidationSchema } from '../formFields';
-import { withLanguage, TranslatedString, WithLanguageProps } from '../locale';
+import { withLanguage, TranslatedHtml, TranslatedString, WithLanguageProps } from '../locale';
 import { OrderComments } from '../orderComments';
 import { Button, ButtonVariant } from '../ui/button';
 import { Fieldset, Form } from '../ui/form';
@@ -66,12 +66,7 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
                     </div> }
 
                 <Fieldset id="checkoutBillingAddress" ref={ this.addressFormRef }>
-                    { (Array.isArray(addresses) && addresses.length === 0) && <>
-                        <TranslatedString id="custom.no_addresses" />
-                        <a href="https://hkliving.com/contact">
-                            <TranslatedString id="custom.no_addresses_action" />
-                        </a>
-                    </> }
+                    { (Array.isArray(addresses) && addresses.length === 0) && <TranslatedHtml data={ {url: `https://${window.location.host.replace('store.', '')}/contact` } } id="custom.no_addresses" /> }
                     { (Array.isArray(addresses) && addresses.length > 0) && hasAddresses && !shouldRenderStaticAddress &&
                         <Fieldset id="billingAddresses">
                             <LoadingOverlay isLoading={ isResettingAddress }>
