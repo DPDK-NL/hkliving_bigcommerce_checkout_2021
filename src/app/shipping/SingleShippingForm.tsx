@@ -155,6 +155,7 @@ class SingleShippingForm extends PureComponent<SingleShippingFormProps & WithLan
                     isLoading={ isLoading || isUpdatingShippingData }
                     isMultiShippingMode={ false }
                     shouldDisableSubmit={ this.shouldDisableSubmit() }
+                    shouldShowComments={ Array.isArray(addresses) && addresses.length > 0 }
                     shouldShowOrderComments={ shouldShowOrderComments }
                     shouldShowShippingOptions={ isValid }
                 />

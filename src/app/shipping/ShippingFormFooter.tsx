@@ -14,6 +14,7 @@ export interface ShippingFormFooterProps {
     shouldShowOrderComments: boolean;
     shouldShowShippingOptions?: boolean;
     shouldDisableSubmit: boolean;
+    shouldShowComments: boolean;
     isLoading: boolean;
 }
 
@@ -25,6 +26,7 @@ class ShippingFormFooter extends PureComponent<ShippingFormFooterProps> {
             shouldShowOrderComments,
             shouldShowShippingOptions = true,
             shouldDisableSubmit,
+            shouldShowComments = true,
             isLoading,
         } = this.props;
 
@@ -53,7 +55,7 @@ class ShippingFormFooter extends PureComponent<ShippingFormFooterProps> {
                 />
             </Fieldset>
 
-            { shouldShowOrderComments &&
+            { shouldShowOrderComments && shouldShowComments &&
                 <OrderComments /> }
 
             <div className="form-actions">

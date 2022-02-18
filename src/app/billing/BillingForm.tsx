@@ -80,7 +80,7 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
                         </Fieldset> }
                 </Fieldset>
 
-                { shouldShowOrderComments &&
+                { shouldShowOrderComments && (Array.isArray(addresses) && addresses.length > 0) &&
                     <OrderComments /> }
 
                 <div className="form-actions">

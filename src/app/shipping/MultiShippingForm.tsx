@@ -149,6 +149,7 @@ class MultiShippingForm extends PureComponent<MultiShippingFormProps & WithLangu
                         isLoading={ isLoading }
                         isMultiShippingMode={ true }
                         shouldDisableSubmit={ this.shouldDisableSubmit() }
+                        shouldShowComments={ Array.isArray(addresses) && addresses.length > 0 }
                         shouldShowOrderComments={ shouldShowOrderComments }
                         shouldShowShippingOptions={ !hasUnassignedLineItems(consignments, cart.lineItems) }
                     />
