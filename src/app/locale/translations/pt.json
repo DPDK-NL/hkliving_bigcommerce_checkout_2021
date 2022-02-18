@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "Foi detectada uma atualização do seu carrinho de compras e seus custos de envio disponíveis foram atualizados. Selecione novamente uma forma de envio para prosseguir.",
             "enter_shipping_address_text": "Insira um endereço de entrega para ver os preços de envio",
-            "order_comment_label": "Comentários sobre o pedido",
+            "order_comment_label": "Remark",
             "assign_item_error": "Ocorreu um erro na atribuição do item ao endereço. Tente novamente",
             "assign_item_invalid_address_error_heading": "Endereço inválido",
             "assign_item_invalid_address_error": "O endereço selecionado não é válido. Acesse a página da sua conta e atualize-a.",

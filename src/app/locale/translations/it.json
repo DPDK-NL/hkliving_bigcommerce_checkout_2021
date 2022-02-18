@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "È stato rilevato un aggiornamento del carrello e i costi di spedizione disponibili sono stati aggiornati. Per continuare, seleziona di nuovo un metodo di spedizione.",
             "enter_shipping_address_text": "Inserisci un indirizzo di spedizione per visualizzare i relativi costi",
-            "order_comment_label": "Commenti sull'ordine",
+            "order_comment_label": "Remark",
             "assign_item_error": "Si è verificato un errore nell'assegnare l'articolo all'indirizzo inserito. Riprova.",
             "assign_item_invalid_address_error_heading": "Indirizzo non valido",
             "assign_item_invalid_address_error": "L'indirizzo selezionato non è valido. Vai sulla pagina del tuo account e aggiornalo.",

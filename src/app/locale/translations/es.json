@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "Se ha detectado una actualización en su carrito de compras y se han actualizado sus costes de envío disponibles. Vuelva a seleccionar un método de envío para continuar.",
             "enter_shipping_address_text": "Introduzca una dirección de envío para ver los presupuestos de envío",
-            "order_comment_label": "Comentarios sobre el pedido",
+            "order_comment_label": "Remark",
             "assign_item_error": "Se ha producido un error al asignar un artículo a una dirección. Vuelva a intentarlo.",
             "assign_item_invalid_address_error_heading": "Dirección no válida",
             "assign_item_invalid_address_error": "La dirección seleccionada no es válida. Vaya a la página de su cuenta y actualícela.",

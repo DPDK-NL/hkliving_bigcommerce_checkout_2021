@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "Er is een update van uw winkelmandje gedetecteerd en de voor u beschikbare verzendkosten zijn bijgewerkt. Selecteer opnieuw een verzendmethode om door te gaan.",
             "enter_shipping_address_text": "Voer een verzendadres in om verzendoffertes te zien",
-            "order_comment_label": "Opmerkingen bij bestelling",
+            "order_comment_label": "Remark",
             "assign_item_error": "Er is een fout opgetreden bij het toewijzen van het artikel aan het adres. Probeer het opnieuw",
             "assign_item_invalid_address_error_heading": "Ongeldig adres",
             "assign_item_invalid_address_error": "Het geselecteerde adres is niet geldig. Ga naar uw accountpagina en werk het bij.",

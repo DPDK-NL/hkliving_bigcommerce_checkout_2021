@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "En uppdatering av din kundvagn har upptäckts och dina tillgängliga fraktkostnader har uppdaterats. Välj en leveransmetod igen för att fortsätta.",
             "enter_shipping_address_text": "Ange en leveransadress för att se fraktkostnader",
-            "order_comment_label": "Beställningskommentarer",
+            "order_comment_label": "Remark",
             "assign_item_error": "Ett fel inträffade när varan skulle tilldelas till adressen. Försök igen",
             "assign_item_invalid_address_error_heading": "Ogiltig adress",
             "assign_item_invalid_address_error": "Den valda adressen är inte giltig. Gå till din kontosida och uppdatera den.",

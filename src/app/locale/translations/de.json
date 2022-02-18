@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "Es wurde eine Aktualisierung Ihres Warenkorbs erkannt und Ihre verfügbaren Versandkosten wurden aktualisiert. Bitte wählen Sie erneut eine Versandmethode aus, um fortzufahren.",
             "enter_shipping_address_text": "Bitte geben Sie eine Versandadresse ein, um Versandangebote anzuzeigen",
-            "order_comment_label": "Kommentare zur Bestellung",
+            "order_comment_label": "Anmerkung",
             "assign_item_error": "Beim Zuordnen des Artikels zur Adresse ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
             "assign_item_invalid_address_error_heading": "Ungültige Adresse",
             "assign_item_invalid_address_error": "Die gewählte Adresse ist nicht gültig. Bitte rufen Sie Ihre Kontoseite auf und aktualisieren Sie sie.",

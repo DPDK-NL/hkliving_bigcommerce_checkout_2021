@@ -407,7 +407,7 @@
         "shipping": {
             "cart_change_error": "Nous avons détecté une mise à jour de votre panier. Les frais de livraison disponibles ont également été mis à jour. Veuillez sélectionner à nouveau un mode de livraison pour continuer.",
             "enter_shipping_address_text": "Veuillez saisir une adresse de livraison pour obtenir une estimation des frais de livraison.",
-            "order_comment_label": "Commentaires sur la commande",
+            "order_comment_label": "Remark",
             "assign_item_error": "Une erreur s'est produite lors de l'attribution de l'article à une adresse. Veuillez réessayer.",
             "assign_item_invalid_address_error_heading": "Adresse non valide",
             "assign_item_invalid_address_error": "L'adresse sélectionnée n'est pas valide. Veuillez accéder à votre compte et la mettre à jour.",
