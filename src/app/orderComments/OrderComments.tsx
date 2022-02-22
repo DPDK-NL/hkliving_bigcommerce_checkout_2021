@@ -2,7 +2,7 @@ import { FieldProps } from 'formik';
 import React, { useCallback, useMemo, FunctionComponent } from 'react';
 
 import { TranslatedString } from '../locale';
-import { Fieldset, FormField, Label, Legend, TextInput } from '../ui/form';
+import { Fieldset, FormField, Label, Legend, TextArea } from '../ui/form';
 
 const OrderComments: FunctionComponent = () => {
     const renderLabel = useCallback(name => (
@@ -12,7 +12,7 @@ const OrderComments: FunctionComponent = () => {
     ), []);
 
     const renderInput = useCallback(({ field }: FieldProps) => (
-        <TextInput
+        <TextArea
             { ...field }
             autoComplete={ 'off' }
             maxLength={ 2000 }
